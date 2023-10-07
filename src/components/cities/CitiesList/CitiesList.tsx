@@ -6,7 +6,7 @@ import { LoadingDisplayer } from "../../shared/loading/LoadingDisplayer";
 import { CityItem } from "../CityItem/CityItem";
 
 export const CitiesList = () => {
-  const { loading, cities } = useCitiesContext();
+  const { loading, citiesList } = useCitiesContext();
 
   return (
     <>
@@ -14,9 +14,10 @@ export const CitiesList = () => {
         <LoadingDisplayer />
       ) : (
         <div className="CitiesList">
-          {cities.cities.map((city: City, index: number) => (
+          {citiesList.map((city: City, index: number) => (
             <CityItem city={city} key={city.name + index} />
           ))}
+          {citiesList.length === 0 && <span>No results found</span>}
         </div>
       )}
     </>

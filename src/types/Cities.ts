@@ -48,34 +48,43 @@ export interface ICities {
 export class Cities implements HasFilterers, HasSorters, ICities {
   public filtererChain: Filterer[] = [];
   public sorterChain: Sorter[] = [];
-  public cities: City[];
+  public readonly cities: City[];
 
   constructor(cities: City[]) {
     this.cities = cities;
   }
 
-  public addFilter(filterer: Filterer) {
-    if (
-      !this.filtererChain.some(
-        (_filterer: Filterer) => _filterer.name === filterer.name
-      )
-    ) {
-      this.filtererChain.push(filterer);
+  public addFilterer(filterer: Filterer) {
+    const existingFilterIndex = this.filtererChain.findIndex(
+      (_filterer: Filterer) => _filterer.name === filterer.name
+    );
+
+    if (existingFilterIndex >= 0) {
+      this.filtererChain.splice(existingFilterIndex, 1);
     }
+    this.filtererChain.push(filterer);
   }
 
   public addSorter(sorter: Sorter) {
-    if (
-      !this.sorterChain.some((_sorter: Sorter) => _sorter.name === sorter.name)
-    ) {
-      this.sorterChain.push(sorter);
+    const existingSorterIndex = this.sorterChain.findIndex(
+      (_sorter: Sorter) => _sorter.name === sorter.name
+    );
+
+    if (existingSorterIndex >= 0) {
+      this.sorterChain.splice(existingSorterIndex, 1);
     }
+    this.sorterChain.push(sorter);
   }
 
   public sortCities(): City[] {
-    const sortedCitiesList = this.cities;
+    let sortedCitiesList = this.cities;
+
     this.filtererChain.forEach((filterer: Filterer) => {
-      filterer.filter(sortedCitiesList);
+      sortedCitiesList = filterer.filter(sortedCitiesList);
+    });
+
+    this.sorterChain.forEach((sorter: Sorter) => {
+      sortedCitiesList = sorter.sort(sortedCitiesList);
     });
 
     return sortedCitiesList;

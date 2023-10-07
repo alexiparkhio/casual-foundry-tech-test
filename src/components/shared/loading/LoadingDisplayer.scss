@@ -1,0 +1,57 @@
+@import "../../../styles/config.scss";
+
+.LoadingDisplayer {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  height: max-content;
+
+  &__ball {
+    width: 36px;
+    height: 36px;
+    background-color: $light-blue;
+    border-radius: 50%;
+
+    animation-name: ball-animation;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  &__ball--static {
+    position: absolute;
+
+    width: 36px;
+    height: 36px;
+    background-color: $light-blue;
+    border-radius: 50%;
+  }
+
+  &__ball-container {
+    box-sizing: border-box;
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    animation: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@keyframes ball-animation {
+  0% {
+    width: 36px;
+    height: 36px;
+    opacity: 1;
+  }
+
+  99% {
+    width: 70px;
+    height: 70px;
+    opacity: 0;
+  }
+}

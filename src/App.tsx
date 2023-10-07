@@ -1,13 +1,21 @@
 import { CitiesList } from "./components/cities/CitiesList/CitiesList";
-import { GeoLocationProvider } from "./components/ctx/GeoLocationProvider";
+import { CitiesProvider } from "./components/ctx/CitiesProvider";
+import { useGeoLocationContext } from "./components/ctx/GeoLocationProvider";
+import { LoadingDisplayer } from "./components/shared/loading/LoadingDisplayer";
 
 function App() {
+  const { loading } = useGeoLocationContext();
+
   return (
-    <GeoLocationProvider>
-      <div className="App" data-testid="App">
-        <CitiesList />
-      </div>
-    </GeoLocationProvider>
+    <div className="App" data-testid="App">
+      {loading ? (
+        <LoadingDisplayer />
+      ) : (
+        <CitiesProvider>
+          <CitiesList />
+        </CitiesProvider>
+      )}
+    </div>
   );
 }
 

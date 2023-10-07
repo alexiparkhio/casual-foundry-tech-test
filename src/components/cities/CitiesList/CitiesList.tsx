@@ -1,7 +1,24 @@
-import { useGeoLocationContext } from "../../ctx/GeoLocationProvider";
+import { City } from "../../../types/Cities";
+import "./CitiesList.scss";
+
+import { useCitiesContext } from "../../ctx/CitiesProvider";
+import { LoadingDisplayer } from "../../shared/loading/LoadingDisplayer";
+import { CityItem } from "../CityItem/CityItem";
 
 export const CitiesList = () => {
-  const { loading } = useGeoLocationContext();
+  const { loading, cities } = useCitiesContext();
 
-  return <>{loading ? <span>Loading...</span> : <span>Bomboclaat</span>}</>;
+  return (
+    <>
+      {loading ? (
+        <LoadingDisplayer />
+      ) : (
+        <div className="CitiesList">
+          {cities.cities.map((city: City, index: number) => (
+            <CityItem city={city} key={city.name + index} />
+          ))}
+        </div>
+      )}
+    </>
+  );
 };

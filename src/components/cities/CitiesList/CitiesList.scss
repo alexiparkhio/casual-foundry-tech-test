@@ -1,0 +1,8 @@
+@import "../../../styles/config.scss";
+
+.CitiesList {
+  display: flex;
+  flex: content;
+  flex-flow: row wrap;
+  gap: $spacing-l $spacing-xl;
+}

@@ -1,0 +1,20 @@
+@import "../../../styles/config.scss";
+
+.CityCardContainer {
+  font-family: $default-font;
+  padding: $spacing-xxl $spacing-l $spacing-xxl $spacing-l;
+  width: 216px;
+  height: 205px;
+  overflow: hidden;
+  background-color: $grey;
+  color: $white;
+  border-radius: $radius-m;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+
+  &:hover {
+    cursor: pointer;
+    outline: 8px solid #00ffff;
+  }
+}

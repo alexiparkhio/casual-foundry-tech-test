@@ -1,11 +1,19 @@
-import { WeatherUnitsKey } from "../../types/Weather";
+import { Weather, WeatherFromAPI, WeatherUnitsKey } from "../../types/Weather";
 
 export const getWeather = async (
   latitude: number,
   longitude: number,
-  units: WeatherUnitsKey
-) => {
-  const api_call = await fetch(`//api.openweathermap.org/data/2.5/weather?
-lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=${units}`);
-  const data = await api_call.json();
+  units: WeatherUnitsKey,
+  cityName?: string
+): Promise<Weather> => {
+  const response = await fetch(
+    `${process.env.REACT_APP_WEATHER_API_URL}?${
+      cityName ? `q=${cityName}&` : ""
+    }lat=${latitude}&lon=${longitude}&appid=${
+      process.env.REACT_APP_WEATHER_API_KEY
+    }&units=${units}`
+  );
+  const weatherFromAPI: WeatherFromAPI = await response.json();
+
+  return new Weather(weatherFromAPI);
 };

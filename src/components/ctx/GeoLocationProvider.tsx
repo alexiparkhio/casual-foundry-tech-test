@@ -5,7 +5,11 @@ import React, {
   useEffect,
   useState,
 } from "react";
+
+/* Services */
 import { getGeolocation } from "../../services/geolocation/getGeolocation";
+
+/* Types */
 import { Coordinates } from "../../types/Cities";
 
 interface GeoLocationContent {
@@ -18,6 +22,10 @@ const GeoLocationContext = createContext<GeoLocationContent>(
   {} as GeoLocationContent
 );
 
+/**
+ * GeoLocationProvider represents the context provider for all geolocation related states and data.
+ * @returns {React.FC<PropsWithChildren>} GeoLocationProvider
+ */
 export const GeoLocationProvider: React.FC<PropsWithChildren> = ({
   children,
 }) => {

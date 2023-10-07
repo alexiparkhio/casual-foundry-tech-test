@@ -7,6 +7,10 @@ import {
 } from "../../types/Weather";
 import { getWeather } from "../weather/getWeather";
 
+/**
+ * getAllCities is the service that returns and parses all cities available.
+ * @returns {Promise<City[]>} The list of cities.
+ */
 export const getAllCities = async (): Promise<City[]> => {
   const parsedCities: City[] = [];
   const cities: CityFromAPI[] = citiesList;
@@ -25,7 +29,11 @@ export const getAllCities = async (): Promise<City[]> => {
   return parsedCities;
 };
 
-//
+/**
+ * getWeatherByUnitsByCity retrieves and formats weather info from a provided city, in different units.
+ * @param {CityFromAPI | City} city The city provided.
+ * @returns {Promise<Record<WeatherUnitsKey, Weather>>} The different weather info arranged by units.
+ */
 const getWeatherByUnitsByCity = async (
   city: CityFromAPI | City
 ): Promise<Record<WeatherUnitsKey, Weather>> => {

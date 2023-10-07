@@ -1,17 +1,27 @@
 import React from "react";
+import "./FiltersAndSortersContainer.scss";
+
+/* Types */
 import { ContinentFilterer, NameFilterer } from "../../../types/Filterers";
 import { DistanceSorter, NameSorter } from "../../../types/Sorters";
 import { WeatherUnitsReversed } from "../../../types/Weather";
+
+/* Context */
 import {
   AVAILABLE_CONTINENTS,
   useCitiesContext,
 } from "../../ctx/CitiesProvider";
 import { useGeoLocationContext } from "../../ctx/GeoLocationProvider";
+
+/* Components */
 import { DropdownInput } from "../../shared/atoms/DropdownInput/DropdownInput";
 import { Input } from "../../shared/atoms/Input/Input";
 import { Tag } from "../../shared/atoms/Tag/Tag";
-import "./FiltersAndSortersContainer.scss";
 
+/**
+ * FiltersAndSortersContainer represents the container of all filters needed to sort and filter the cities list.
+ * @returns {React.FC} FiltersAndSortersContainer
+ */
 export const FiltersAndSortersContainer: React.FC = () => {
   const {
     selectedTemperatureUnit,

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import "./DropdownInput.scss";
+
+/* Components */
 import { DropdownArrow } from "../../../../assets/icons/DropdownArrow";
 import { Tag } from "../Tag/Tag";
-import "./DropdownInput.scss";
 
 interface DropdownInputProps {
   label: string;
@@ -10,6 +12,14 @@ interface DropdownInputProps {
   onSelect: (v: any) => void;
 }
 
+/**
+ * DropdownInput depresents an input with a dropdown feature.
+ * @param {string} label The input's desired label text.
+ * @param {any} value The input's selected value.
+ * @param {any[]} data The data representing all options to be displayed.
+ * @param {Function} onSelect The callback function triggered when selecting one input option.
+ * @returns {React.FC<DropdownInputProps>} DropdownInput
+ */
 export const DropdownInput: React.FC<DropdownInputProps> = ({
   label,
   onSelect,
@@ -28,7 +38,10 @@ export const DropdownInput: React.FC<DropdownInputProps> = ({
     <div className="DropdownInput" data-testid="DropdownInput">
       <Tag>{label}</Tag>
 
-      <div className="DropdownInput__container" data-testid="DropdownInput">
+      <div
+        className="DropdownInput__container"
+        data-testid="DropdownInput__container"
+      >
         <div
           className="DropdownInput__select"
           onClick={() => setOpenDropdown(!openDropdown)}

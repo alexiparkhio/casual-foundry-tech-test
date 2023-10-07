@@ -56,3 +56,16 @@ $line-height-ml: 17.58px;
 $line-height-l: 19.92px;
 $line-height-xl: 23.44px;
 $line-height-xxl: 29.3px;
+
+// Mixins
+@mixin scrollable {
+  overflow-y: scroll;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  box-sizing: border-box;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}

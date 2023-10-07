@@ -1,0 +1,76 @@
+@import "../../../../styles/config.scss";
+
+.DropdownInput {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    position: relative;
+  }
+
+  &__select {
+    font-size: $font-size-xs;
+    box-sizing: border-box;
+    display: flex;
+    min-height: 34px;
+    flex-direction: column;
+    max-width: 402px;
+    border-radius: $radius-s;
+    border: 1px solid $black;
+    padding: $spacing-s $spacing-sm;
+    box-shadow: 0px 0px 4px 3px rgba(0, 0, 0, 0.25) inset;
+    cursor: pointer;
+
+    &:active {
+      opacity: 0.5;
+    }
+
+    &__placeholder {
+      user-select: none;
+      text-transform: capitalize;
+    }
+
+    .DropdownArrow {
+      position: absolute;
+      right: $spacing-m;
+      top: $spacing-m;
+    }
+  }
+}
+
+.DropdownInputContent {
+  position: absolute;
+  width: 100%;
+  max-height: 200px;
+  @include scrollable;
+
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  top: 42px;
+
+  &.large {
+    top: 50px;
+  }
+
+  &__option {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: $spacing-m $spacing-l;
+    background-color: $white;
+    border: 1px solid $black;
+    border-bottom: none;
+    color: $black;
+    user-select: none;
+    cursor: pointer;
+
+    &:last-child {
+      border-bottom: 1px solid $black;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+}

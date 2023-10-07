@@ -23,6 +23,7 @@ interface CityItemProps {
  */
 export const CityItem: React.FC<CityItemProps> = ({ city }) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [isClicked, setIsClicked] = useState<boolean>(false);
   const { selectedTemperatureUnit } = useCitiesContext();
 
   return (
@@ -30,6 +31,7 @@ export const CityItem: React.FC<CityItemProps> = ({ city }) => {
       image={city.image}
       isHovered={isHovered}
       setIsHovered={setIsHovered}
+      onClick={() => setIsClicked(!isClicked)}
     >
       <div className="CityItem__title">
         <Title>{city.name}</Title>
@@ -37,7 +39,7 @@ export const CityItem: React.FC<CityItemProps> = ({ city }) => {
         <span className="CityItem__country">{city.continent}</span>
       </div>
 
-      {isHovered ? (
+      {isClicked ? (
         <div className="CityItem__weather">
           <Title>
             {city.weatherByUnits[selectedTemperatureUnit].temperature}{" "}

@@ -51,7 +51,7 @@ export class Cities implements HasFilterers, HasSorters, ICities {
   public readonly cities: City[];
 
   constructor(cities: City[]) {
-    this.cities = cities;
+    this.cities = cities.filter((city: City) => !!city.active);
   }
 
   public addFilterer(filterer: Filterer) {

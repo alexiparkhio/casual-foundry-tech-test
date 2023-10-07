@@ -4,7 +4,8 @@
   font-family: $default-font;
   padding: $spacing-xxl $spacing-l $spacing-xxl $spacing-l;
   width: 216px;
-  height: 205px;
+  min-height: 205px;
+  max-height: 205px;
   overflow: hidden;
   background-color: $grey;
   color: $white;
@@ -12,8 +13,10 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+  transition: max-height 1s;
 
   &:hover {
+    max-height: 100%;
     cursor: pointer;
     outline: 8px solid #00ffff;
   }

@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * DropdownArrow represents an small triangle that acts as a button to open a dropdown input.
+ *
+ * @returns {React.SVGProps<SVGSVGElement>} DropdownArrow
+ */
 export const DropdownArrow = ({ ...props }: React.SVGProps<SVGSVGElement>) => (
   <svg
     width="14"

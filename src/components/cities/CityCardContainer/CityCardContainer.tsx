@@ -7,6 +7,14 @@ interface CityCardContainerProps {
   setIsHovered: React.Dispatch<React.SetStateAction<boolean>>;
   children: any;
 }
+
+/**
+ * CityCardContainer represents the boilerplate container for CityItem components. It will reflect changes on hover.
+ * @param {string} image The city's image URL.
+ * @param {boolean} isHovered The switch to determine whether or not an item is hovered.
+ * @param {React.Dispatch<React.SetStateAction<boolean>>} setIsHovered The state updater for isHovered.
+ * @returns {React.FC<PropsWithChildren<CityCardContainerProps>} CityCardContainer
+ */
 export const CityCardContainer: React.FC<
   PropsWithChildren<CityCardContainerProps>
 > = ({ image, isHovered, setIsHovered, children }) => {
@@ -27,6 +35,7 @@ export const CityCardContainer: React.FC<
   return (
     <div
       className="CityCardContainer"
+      data-testid="CityCardContainer"
       style={containerStyle}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

@@ -1,14 +1,11 @@
 import React, { PropsWithChildren } from "react";
 import "./Tag.scss";
 
-interface TagProps {}
-
 /**
- * TODO: add docu
- * @param param0
- * @returns
+ * Tag represents the small labeled text on top of other components.
+ * @returns {React.FC<PropsWithChildren>} Tag
  */
-export const Tag: React.FC<PropsWithChildren<TagProps>> = ({ children }) => {
+export const Tag: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <span className="Tag" data-testid="Tag">
       {children}

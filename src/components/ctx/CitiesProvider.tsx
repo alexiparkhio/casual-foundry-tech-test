@@ -5,8 +5,12 @@ import React, {
   useEffect,
   useState,
 } from "react";
+
+/* Services */
 import { getAllCities } from "../../services/cities/getAllCities";
 import { Cities, City } from "../../types/Cities";
+
+/* Types */
 import { WeatherUnitsKey } from "../../types/Weather";
 
 export const AVAILABLE_CONTINENTS = [
@@ -33,6 +37,10 @@ interface CitiesContent {
 
 const CitiesContext = createContext<CitiesContent>({} as CitiesContent);
 
+/**
+ * CitiesProvider represents the context provider for all city related states and data.
+ * @returns {React.FC<PropsWithChildren>} CitiesProvider
+ */
 export const CitiesProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [citiesClient, setCitiesClient] = useState<Cities>(new Cities([]));

@@ -1,0 +1,51 @@
+@import "../../../styles/config.scss";
+
+.FiltersAndSortersContainer {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  padding: $spacing-xl;
+
+  &__column {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &:first-child {
+      margin-right: $spacing-m;
+    }
+
+    &:last-child {
+      margin-left: $spacing-m;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      margin: 0 $spacing-m;
+    }
+  }
+
+  &__option {
+    cursor: pointer;
+
+    &:first-child {
+      margin-right: $spacing-xs;
+    }
+
+    &:last-child {
+      margin-left: $spacing-xs;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      margin: 0 $spacing-xs;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &.selected {
+      text-decoration: underline;
+    }
+  }
+}

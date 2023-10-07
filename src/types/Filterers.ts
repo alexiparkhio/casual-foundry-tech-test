@@ -1,40 +1,57 @@
+import { City } from "./Cities";
+
 export interface HasFilterers {
   filtererChain: Filterer[];
 }
 
 export type CityFilterers = "NAME" | "CONTINENT";
 
-export interface IFilterer {
-  filter(products: any[]): any[];
+export interface IFilterer<T> {
+  filter(array: T[]): T[];
 }
 
-export abstract class Filterer implements IFilterer {
+export abstract class Filterer implements IFilterer<City> {
   readonly name: CityFilterers;
   constructor(name: CityFilterers) {
     this.name = name;
   }
 
-  abstract filter(products: any[]): any[];
+  abstract filter(cities: City[]): City[];
 }
 
 export class NameFilterer extends Filterer {
-  constructor() {
+  private param: string;
+
+  constructor(param: string) {
     super("NAME");
+
+    this.param = param;
   }
 
-  public filter(products: any[]): any[] {
-    // product.name
-    return products;
+  public filter(cities: City[]): City[] {
+    if (!this.param.length) {
+      return cities;
+    }
+
+    return cities.filter((city: City) =>
+      city.name.toLowerCase().includes(this.param.toLowerCase())
+    );
   }
 }
 
 export class ContinentFilterer extends Filterer {
-  constructor() {
+  private continent: string;
+
+  constructor(continent: string) {
     super("CONTINENT");
+
+    this.continent = continent;
   }
 
-  public filter(products: any[]): any[] {
-    // product.name
-    return products;
+  public filter(cities: City[]): City[] {
+    if (!this.continent.length) {
+      return cities;
+    }
+    return cities.filter((city: City) => city.continent === this.continent);
   }
 }

@@ -1,0 +1,35 @@
+@import "../../../styles/config.scss";
+
+.CityItem {
+  &__title {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 5px;
+    padding-bottom: $spacing-l;
+  }
+
+  &__country {
+    font-size: $font-size-m;
+    font-weight: $font-weight-s;
+    line-height: $line-height-xl;
+  }
+
+  &__description {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-s;
+    line-height: $line-height-sm;
+  }
+
+  &__weather {
+    height: 50%;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 5px;
+
+    &-text {
+      font-size: $font-size-s;
+      font-weight: $font-weight-s;
+      line-height: $line-height-ml;
+    }
+  }
+}
